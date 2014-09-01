@@ -1,0 +1,11 @@
+1.工程说明
+sso/src : 单点登录代码,用于作用户+加密密码登录.
+push/src : 推送代码,通过类PushActivityEventHandler监听工作流流程,从而推送消息.
+wspush/src : 推送的webservice代码,此代码由IPushWebService.wsdl生成.
+
+2.工程依赖说明
+工程依赖EAS环境的jar包.
+
+3.打包说明
+用ant打开project-build.xml.执行对应的打包.
+注意,请尽量不要修改project-build.xml已有的内容.

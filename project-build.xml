@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<project name="greewf-sp" basedir=".">
+	
+	<tstamp>
+		<format pattern="yyyyMMddHHmmss" property="NOW" />
+	</tstamp>
+	
+	<!-- 将三个资料分别打成jar包 -->
+	<target name="jar-all" >
+		<antcall target="jar-push"></antcall>
+		<antcall target="jar-wspush"></antcall>
+		<antcall target="jar-sso"></antcall>
+	</target>
+	<!-- 将推送代码打成jar包 -->
+	<target name="jar-push" >
+    	<mkdir dir="./target/jar"/>
+		<delete file="target/jar/gree-wf-push.jar" ></delete>
+	    <jar destfile="target/jar/gree-wf-push.jar" basedir="./target/classes/push" >
+		<include name="**/*"/>
+    	<manifest>
+			<attribute name="Main-class" value="Main"/>
+			<attribute name="Jar-date" value="${NOW}"/>
+		</manifest>
+		</jar>
+	</target>
+	<!-- 将推送的webservice代码打成jar包 -->
+	<target name="jar-wspush" >
+    	<mkdir dir="./target/jar"/>
+		<delete file="target/jar/gree-wf-wspush.jar" ></delete>
+	    <jar destfile="target/jar/gree-wf-wspush.jar" basedir="./target/classes/wspush" >
+		<include name="**/*"/>
+    	<manifest>
+			<attribute name="Main-class" value="Main"/>
+			<attribute name="Jar-date" value="${NOW}"/>
+		</manifest>
+		</jar>
+	</target>
+	<!-- 将单点登录代码打成jar包 -->
+	<target name="jar-sso" >
+    	<mkdir dir="./target/jar"/>
+		<delete file="target/jar/gree-wf-sso.jar" ></delete>
+	    <jar destfile="target/jar/gree-wf-sso.jar" basedir="./target/classes/sso" >
+		<include name="**/*"/>
+    	<manifest>
+			<attribute name="Main-class" value="Main"/>
+			<attribute name="Jar-date" value="${NOW}"/>
+		</manifest>
+		</jar>
+	</target>
+	
+</project>

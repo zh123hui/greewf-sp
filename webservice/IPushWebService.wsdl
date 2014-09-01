@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="com.greedc.cloud.cmf.ws" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="PushWebServiceImplService" targetNamespace="com.greedc.cloud.cmf.ws">
+  <wsdl:types>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="com.greedc.cloud.cmf.ws" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="com.greedc.cloud.cmf.ws">
+  <xsd:complexType name="ArrayOfString">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="string" nillable="true" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="sayYeahHeyJude" type="tns:sayYeahHeyJude"/>
+  <xsd:complexType name="sayYeahHeyJude">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="arg0" nillable="true" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="sayYeahHeyJudeResponse" type="tns:sayYeahHeyJudeResponse"/>
+  <xsd:complexType name="sayYeahHeyJudeResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="return" nillable="true" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="pushEasMessage" type="tns:pushEasMessage"/>
+  <xsd:complexType name="pushEasMessage">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="arg0" nillable="true" type="xsd:string"/>
+      <xsd:element name="arg1" nillable="true" type="tns:ArrayOfString"/>
+      <xsd:element minOccurs="0" name="arg2" type="xsd:dateTime"/>
+      <xsd:element minOccurs="0" name="arg3" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="arg4" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="arg5" nillable="true" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="pushEasMessageResponse" type="tns:pushEasMessageResponse"/>
+  <xsd:complexType name="pushEasMessageResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="return" nillable="true" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="sayYeahHeyJude">
+    <wsdl:part element="tns:sayYeahHeyJude" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pushEasMessageResponse">
+    <wsdl:part element="tns:pushEasMessageResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sayYeahHeyJudeResponse">
+    <wsdl:part element="tns:sayYeahHeyJudeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pushEasMessage">
+    <wsdl:part element="tns:pushEasMessage" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="IPushWebService">
+    <wsdl:operation name="sayYeahHeyJude">
+      <wsdl:input message="tns:sayYeahHeyJude" name="sayYeahHeyJude">
+    </wsdl:input>
+      <wsdl:output message="tns:sayYeahHeyJudeResponse" name="sayYeahHeyJudeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="pushEasMessage">
+      <wsdl:input message="tns:pushEasMessage" name="pushEasMessage">
+    </wsdl:input>
+      <wsdl:output message="tns:pushEasMessageResponse" name="pushEasMessageResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PushWebServiceImplServiceSoapBinding" type="tns:IPushWebService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="sayYeahHeyJude">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="sayYeahHeyJude">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="sayYeahHeyJudeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="pushEasMessage">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="pushEasMessage">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="pushEasMessageResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PushWebServiceImplService">
+    <wsdl:port binding="tns:PushWebServiceImplServiceSoapBinding" name="PushWebServiceImplPort">
+      <soap:address location="http://localhost:8080/eas/com.greedc.cloud.cmf.interfaces.ws/IPushWebService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
